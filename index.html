@@ -3,25 +3,11 @@
     
     </head>
     <body>
-        <h1>Sample Title</h1>
-        <p>Switched up sample https request query done via fetch</p>
-        <div id="root"></div>
-        <script src="credentials.js"></script>  
-        <script src="https://apis.google.com/js/api.js"></script>
-        <script>
-console.log("QUERY: " + `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=animals%20as%20leaders&key=${apiKey}`);
-document.getElementById('root').innerHTML = "";
-fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=animals%20as%20leaders&key=${apiKey}`)
-    .then((res) => res.json())
-    .then(processData)
-    .catch(renderError);
-
-function processData(response){
-    console.log('response:' + response);
-}
-
-const renderError = (err = 'Error processing request') => document
-    .getElementById('root').innerHTML = `<div>${err}</div>`;
-        </script>
-    </body>
+            <h1>Sample Title</h1>
+            <p>Switched up sample https request query done via fetch</p>
+            <div id="root"></div>
+            <script src="credentials.js"></script>  
+            <script src="https://apis.google.com/js/api.js"></script>
+            <script src="main.js"></script>
+        </body>
 </html>
