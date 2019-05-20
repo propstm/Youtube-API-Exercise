@@ -1,10 +1,16 @@
 <html>
     <head>
-    
+        <title>Youtube API Exercise</title>
     </head>
     <body>
-            <h1>Sample Title</h1>
-            <p>Switched up sample https request query done via fetch</p>
+            <h1 id="videoTitle"></h1>
+            <iframe id="videoFrame" src="https://www.youtube.com/embed/XGwa3FQtSD0" frameborder="0" allowfullscreen></iframe>
+            <p id="videoDescription"></p>
+            <ul>
+                <li id="views"></li>
+                <li id="likes"></li>
+                <li id="dislikes"></li>
+            </ul>
             <div id="root"></div>
             <script src="credentials.js"></script>  
             <script src="https://apis.google.com/js/api.js"></script>
