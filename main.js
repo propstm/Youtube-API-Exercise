@@ -1,6 +1,6 @@
 function processData(response){
     //console.log(response);
-    var navigationElement = document.getElementById('navigation');
+    var navigationElement = document.getElementById('results');
 
     navigationElement.innerHTML = "";
 
@@ -33,10 +33,15 @@ function processDetailData(response){
 
         document.getElementById('videoTitle').innerHTML = title;
         document.getElementById('videoDescription').innerHTML = description;
-        document.getElementById('views').innerHTML = "View Count: " + views;
-        document.getElementById('likes').innerHTML = "Like Count: " + likes;
-        document.getElementById('dislikes').innerHTML = "Dislike Count: " + dislikes;
+        document.getElementById('views').innerHTML = "View Count: " + views + "<br/>Like Count: " + likes + "<br/>Dislike Count: " + dislikes;
     }
+}
+
+function fetchVideosForQuery(q){
+    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${q}&key=${apiKey}`)
+    .then((res) => res.json())
+    .then(processData)
+    .catch(renderError);
 }
 
 function loadVideo(id){
@@ -52,9 +57,6 @@ function loadVideo(id){
 const renderError = (err = 'Error processing request') => document
     .getElementById('root').innerHTML = `<div>${err}</div>`;
 
+// Load default content    
 loadVideo('XGwa3FQtSD0');
-
-fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=animals%20as%20leaders&key=${apiKey}`)
-    .then((res) => res.json())
-    .then(processData)
-    .catch(renderError);
+fetchVideosForQuery('Animals As Leaders');
