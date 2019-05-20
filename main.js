@@ -1,24 +1,21 @@
 function processData(response){
     //console.log(response);
-    var rootElement = document.getElementById('root');
+    var navigationElement = document.getElementById('navigation');
 
-    rootElement.innerHTML = "";
-    root.insertAdjacentHTML('beforeEnd', `<ul>`);
-
+    navigationElement.innerHTML = "";
 
     for (var i in response.items){
-        //console.log(response.items[i]);
+        console.log(response.items[i]);
         console.log('video id:' + response.items[i].id.videoId);
         var item = response.items[i]
         var videoId = item.id.videoId;
         var title = item.snippet.title;
-        var thumbnailUrl = item.snippet.thumbnails.default.url;
+        var thumbnailUrl = item.snippet.thumbnails.medium.url;
         
 
-        root.insertAdjacentHTML('beforeEnd', `<li onclick="loadVideo('${videoId}')"><img src="${thumbnailUrl}" alt="${title}" />${title}</li>`);
+        navigationElement.insertAdjacentHTML('beforeEnd', `<div class="entry" onclick="loadVideo('${videoId}')"><img src="${thumbnailUrl}" alt="${title}" /><p class="navTitle">${title}</p></div>`);
     }
 
-    root.insertAdjacentHTML('beforeEnd', `</ul>`);
 }
 
 function processDetailData(response){
@@ -36,9 +33,9 @@ function processDetailData(response){
 
         document.getElementById('videoTitle').innerHTML = title;
         document.getElementById('videoDescription').innerHTML = description;
-        document.getElementById('views').innerHTML = views;
-        document.getElementById('likes').innerHTML = likes;
-        document.getElementById('dislikes').innerHTML = dislikes;
+        document.getElementById('views').innerHTML = "View Count: " + views;
+        document.getElementById('likes').innerHTML = "Like Count: " + likes;
+        document.getElementById('dislikes').innerHTML = "Dislike Count: " + dislikes;
     }
 }
 
@@ -54,6 +51,8 @@ function loadVideo(id){
 
 const renderError = (err = 'Error processing request') => document
     .getElementById('root').innerHTML = `<div>${err}</div>`;
+
+loadVideo('XGwa3FQtSD0');
 
 fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=animals%20as%20leaders&key=${apiKey}`)
     .then((res) => res.json())

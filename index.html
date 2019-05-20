@@ -1,19 +1,24 @@
 <html>
     <head>
         <title>Youtube API Exercise</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
-    <body>
-            <h1 id="videoTitle"></h1>
-            <iframe id="videoFrame" src="https://www.youtube.com/embed/XGwa3FQtSD0" frameborder="0" allowfullscreen></iframe>
-            <p id="videoDescription"></p>
-            <ul>
-                <li id="views"></li>
-                <li id="likes"></li>
-                <li id="dislikes"></li>
-            </ul>
-            <div id="root"></div>
+    <body>  
+        <div class="content">
+            <div id="featuredVideo">
+                <iframe id="videoFrame" src="https://www.youtube.com/embed/XGwa3FQtSD0" frameborder="0" allowfullscreen></iframe>
+                <h2 id="videoTitle"></h2>
+                <p id="videoDescription"></p>
+                <ul>
+                    <li id="views"></li>
+                    <li id="likes"></li>
+                    <li id="dislikes"></li>
+                </ul>
+            </div>
+            <div id="navigation"></div>
             <script src="credentials.js"></script>  
             <script src="https://apis.google.com/js/api.js"></script>
             <script src="main.js"></script>
-        </body>
+        </div>
+    </body>
 </html>
